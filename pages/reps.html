@@ -1,0 +1,63 @@
+<head>
+  <link rel="stylesheet" type="text/css" href="/static/css/style.css">
+</head>
+<body>
+  Your Representatives ({{repsResult.normalizedInput['line1']}}, {{repsResult.normalizedInput['city']}}, {{repsResult.normalizedInput['state']}}, {{repsResult.normalizedInput['zip']}})<br><br>
+  <div ng-repeat="rep in repsResult.offices">
+    <div ng-repeat="index in rep.officialIndices">
+      <div class="rep-photo-container" ng-if="repsResult.officials[index].photoUrl">
+        <img class="rep-photo" ng-src="{{repsResult.officials[index].photoUrl}}">
+      </div>
+      <div class="rep-photo-container" ng-if="!repsResult.officials[index].photoUrl">
+        <img class="rep-photo" ng-src="static/img/empty.png">
+      </div>
+      <div class="rep-info">
+        <h3 class="rep-name">
+          {{repsResult.officials[index].name}}
+        </h3>
+        <h4 class="rep-party">
+          ({{repsResult.officials[index].party}})
+        </h4>
+        <h4 class="rep-office">
+          {{rep.name}}
+        </h4>
+        <div class="rep-info-left">
+          <div class="rep-phone">
+            {{repsResult.officials[index].phones[0]}}
+          </div>
+          <div class="rep-homepage">
+            <a href="{{repsResult.officials[index].urls[0]}}">Homepage</a>
+          </div>
+        </div>
+        <div class="rep-info-right">
+          <div class="rep-address">
+              {{repsResult.officials[index].address[0]['line1']}}
+            <div ng-if="repsResult.officials[index].address[0]['line2']">
+              {{repsResult.officials[index].address[0]['line2']}}
+            </div>
+            <div>
+              {{repsResult.officials[index].address[0]['city']}},
+              {{repsResult.officials[index].address[0]['state']}}
+              {{repsResult.officials[index].address[0]['zip']}}
+            </div>
+          </div>
+        </div>
+        <ol class="rep-channels" ng-repeat="channel in repsResult.officials[index].channels">
+          <li ng-if="channel.type==='GooglePlus'">
+            <a href="//plus.google.com/{{channel.id}}"><img class="rep-channel" src="static/img/googleplus.png" alt="Google Plus"></a>
+          </li>
+          <li ng-if="channel.type==='Twitter'">
+            <a href="//twitter.com/{{channel.id}}"><img class="rep-channel" src="static/img/twitter.png" alt="Twitter"></a>
+          </li>
+          <li ng-if="channel.type==='Facebook'">
+            <a href="//facebook.com/{{channel.id}}"><img class="rep-channel" src="static/img/facebook.png" alt="Facebook"></a>
+          </li>
+          <li ng-if="channel.type==='Youtube'">
+            <a href="//youtube.com/{{channel.id}}"><img class="rep-channel" src="static/img/youtube.png" alt="YouTube"></a>
+          </li>
+        </ol>
+      </div>
+      <br>
+    </div>
+  </div>
+</body>

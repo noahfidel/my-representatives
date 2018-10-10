@@ -1,0 +1,57 @@
+.rep-photo{
+    max-width: 150px;
+    height: 150px;
+}
+
+.container{
+    margin: auto;
+    width: 75%;
+}
+
+.rep-photo-container{
+    width: 180px;
+    display: inline-block;
+}
+
+.rep-info{
+    display: inline-block;
+}
+
+.rep-info-right{
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 30px;
+}
+
+.rep-info-left{
+    display: inline-block;
+}
+
+.rep-channel{
+    width: 25px;
+    height: 25px;
+    margin-right: 5px;
+}
+
+.rep-name{
+    display: inline-block;
+}
+
+.rep-party{
+    display: inline-block;
+}
+
+li{
+    list-style: none;
+    float: left;
+}
+
+ol{
+    padding-left: 0px;
+    margin: 0px;
+}
+
+.rep-office{
+    font-style: italic;
+    font-weight: bold;
+}
