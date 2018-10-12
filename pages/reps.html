@@ -3,6 +3,14 @@
 </head>
 <body>
   Your Representatives ({{repsResult.normalizedInput['line1']}}, {{repsResult.normalizedInput['city']}}, {{repsResult.normalizedInput['state']}}, {{repsResult.normalizedInput['zip']}})<br><br>
+  <div class="filter-buttons">
+    <button ng-click="filter='All'" class="filter-button">View All</button>
+    <button ng-click="filter='Federal'" class="filter-button">Federal</button>
+    <button ng-click="filter='State'" class="filter-button">State</button>
+  </div>
+  <div class="form-group">
+            <input type="text" class="form-control" ng-model="filter" />
+        </div>
   <div ng-repeat="rep in repsResult.offices">
     <div ng-repeat="index in rep.officialIndices">
       <div class="rep-photo-container" ng-if="repsResult.officials[index].photoUrl">

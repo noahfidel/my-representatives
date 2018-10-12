@@ -25,7 +25,11 @@ civicApp.service('addressService', ['$cookies', function($cookies){
         this.address = $cookies.address
     }
 
+    this.filter = 'All'
+
 }]);
+
+
 
 civicApp.controller('homeController', ['$scope', '$cookies', 'addressService', function($scope, $cookies, addressService) {
 
@@ -45,6 +49,12 @@ civicApp.controller('repController', ['$scope', '$resource', '$cookies', 'addres
         addressService.address = $scope.address;
     })
 
+    $scope.filter = addressService.filter;
+
+    $scope.$watch('filter', function(){
+        addressService.filter = $scope.filter;
+    })
+
     $cookies.address = $scope.address;
 
     $scope.repAPI = $resource("https://www.googleapis.com/civicinfo/v2/representatives",
@@ -55,5 +65,7 @@ civicApp.controller('repController', ['$scope', '$resource', '$cookies', 'addres
         key: 'AIzaSyCpkCKBwYoCvi5mbahHSmRs7y5PEyrEJuc',
         address: $scope.address
     })
+
+    console.log($scope.filter)
 
 }]);

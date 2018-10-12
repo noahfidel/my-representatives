@@ -1,6 +1,7 @@
 .rep-photo{
     max-width: 150px;
-    height: 150px;
+    min-height: 120px;
+    max-height: 150px;
 }
 
 .container{
