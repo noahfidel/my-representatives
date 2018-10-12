@@ -66,6 +66,6 @@ civicApp.controller('repController', ['$scope', '$resource', '$cookies', 'addres
         address: $scope.address
     })
 
-    console.log($scope.filter)
+    console.log($scope.repsResult)
 
 }]);

@@ -5,14 +5,11 @@
   Your Representatives ({{repsResult.normalizedInput['line1']}}, {{repsResult.normalizedInput['city']}}, {{repsResult.normalizedInput['state']}}, {{repsResult.normalizedInput['zip']}})<br><br>
   <div class="filter-buttons">
     <button ng-click="filter='All'" class="filter-button">View All</button>
-    <button ng-click="filter='Federal'" class="filter-button">Federal</button>
-    <button ng-click="filter='State'" class="filter-button">State</button>
+    <button ng-click="filter='country'" class="filter-button">Federal</button>
+    <button ng-click="filter='administrativeArea1'" class="filter-button">State</button>
   </div>
-  <div class="form-group">
-            <input type="text" class="form-control" ng-model="filter" />
-        </div>
   <div ng-repeat="rep in repsResult.offices">
-    <div ng-repeat="index in rep.officialIndices">
+    <div ng-repeat="index in rep.officialIndices" ng-show="filter==='All' || filter===rep.levels[0]">
       <div class="rep-photo-container" ng-if="repsResult.officials[index].photoUrl">
         <img class="rep-photo" ng-src="{{repsResult.officials[index].photoUrl}}">
       </div>
@@ -23,7 +20,7 @@
         <h3 class="rep-name">
           {{repsResult.officials[index].name}}
         </h3>
-        <h4 class="rep-party">
+        <h4 class="rep-party" ng-if="repsResult.officials[index].party">
           ({{repsResult.officials[index].party}})
         </h4>
         <h4 class="rep-office">
